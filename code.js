@@ -1,6 +1,8 @@
 const myUsernames = [];
 const myTotaldownloads = [];
 const myTotaluploads = [];
+
+
 function getdata() {
     fetch('https://DeepskyblueAlienatedDaemons.diwash5.repl.co/data')
         .then(response => response.json())
@@ -22,10 +24,11 @@ function fuknhell() {
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
     type: 'bar',
+    plugins: [plugin],
     data: {
     labels: myUsernames,
     datasets: [{
-        label: 'Downloads',
+        label: 'Download',
         data: myTotaldownloads,
         backgroundColor: [
             'rgba(255, 99, 132, 3)'
@@ -57,7 +60,27 @@ options: {
         y: {
           stacked: true
         }
+    },
+    plugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: 'rgba(232, 232, 232, 1)'
+            }
+        }
     }
 }
 });
+};
+
+const plugin = {
+  id: 'custom_canvas_background_color',
+  beforeDraw: (chart) => {
+    const ctx = chart.canvas.getContext('2d');
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = 'lightgreen';
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  }
 };

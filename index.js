@@ -76,5 +76,17 @@ app.get('/code.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/code.js'));
   });
 
-app.listen(PORT , () => console.log('Server started on port ' + PORT));
+app.get('/rawdata', (req, res) => { 
+    Speed.find({},{
+      _id : 0,
+      updatedAt : 0,
+      __v: 0
+    }, (err,foundData) => {
+      if(err) {
+        console.log(err);
+      } else {
+        res.send(foundData);
+      };
+    }, {} )});
 
+app.listen(PORT , () => console.log('Server started on port ' + PORT));
