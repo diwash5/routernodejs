@@ -28,10 +28,10 @@ function fuknhell() {
         label: 'Downloads',
         data: myTotaldownloads,
         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)'
+            'rgba(255, 99, 132, 3)'
         ],
         borderColor: [
-            'rgba(255, 99, 132, 1)'
+            'rgba(255, 99, 132, 5)'
         ],
         borderWidth: 1
     },

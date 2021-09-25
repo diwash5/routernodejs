@@ -9,7 +9,6 @@ const myPassword = process.env['password']
 
 const dbURI = `mongodb+srv://${myUsername}:${myPassword}@router.fnopf.mongodb.net/Router?retryWrites=true&w=majority`
 const Speed = require('./model/speed')
-const Usage = require('./model/usage')
 
 
 mongoose.connect(dbURI)
@@ -25,19 +24,6 @@ app.post('/speed', (req,res) => {
     let recievedinfo = new Speed(req.body)
     
     recievedinfo.save()
-        .then((result) => {
-                res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        });
-} );
-
-app.post('/usage', (req,res) => {
-    console.log(req.body);
-    let recievedusageinfo = new Usage(req.body)
-    
-    recievedusageinfo.save()
         .then((result) => {
                 res.send(result)
         })
