@@ -109,10 +109,15 @@ function chartmeplease() {
         borderColor: 'blue' ,
         borderWidth: 1,
         radius: 0
-    }]
-}
-} )
-};
+    }],
+    options: {
+        scales: {
+            x: {
+                ,
+            }
+        }
+    }
+}});};
 
 const plugin = {
   id: 'custom_canvas_background_color',

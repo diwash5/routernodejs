@@ -19,6 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 //app.listen(3000, "192.183.30.11");
 
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.post('/speed', (req,res) => {
     console.log(req.body);
     let recievedinfo = new Speed(req.body)
