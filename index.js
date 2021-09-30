@@ -93,16 +93,22 @@ app.get('/userusage', (req, res) => {
             acc[cur.user].totaluploads += parseFloat(cur.totalupload);
             return acc;
             }, {});
+            const userdata={
+                "user": [],
+                "totaluploads":[],
+                "totaldownloads":[]
+            };
             Object.entries(totals).forEach(entry => {
             const [key, value] = entry;
+            userdata.user.push(key)
             var downloads = value.totaldownloads
             var ndvalue = downloads / 1073741824 
-            value.totaldownloads = ndvalue.toFixed(3)
+            userdata.totaldownloads.push(ndvalue.toFixed(3))
             var uploads = value.totaluploads
             var nuvalue = uploads / 1073741824 
-            value.totaluploads = nuvalue.toFixed(3)
+            userdata.totaluploads.push(nuvalue.toFixed(3))
             });
-            res.send(totals);
+            res.send(userdata);
           };
         }, {} )});
 
