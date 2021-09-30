@@ -1,10 +1,7 @@
-var userdata;
-var timeseries;
 function getdata() {
     fetch ('https://routernodejs-1.diwash5.repl.co/userusage')
         .then(response => response.json())
         .then (data => {
-            console.log(data)
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
     type: 'bar',
@@ -55,7 +52,6 @@ function timeseries() {
     fetch ('https://routernodejs-1.diwash5.repl.co/timeseries')
         .then(response => response.json())
         .then (data => {
-            console.log(data)
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
     type: 'line',

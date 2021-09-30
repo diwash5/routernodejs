@@ -5,7 +5,6 @@ const path = require('path')
 const PORT = process.env.PORT;
 const myUsername = process.env['username']
 const myPassword = process.env['password']
-
 const dbURI = `mongodb+srv://${myUsername}:${myPassword}@router.fnopf.mongodb.net/RouterTRY?retryWrites=true&w=majority`
 const Speed = require('./model/speed')
 
@@ -47,19 +46,20 @@ app.get('/timeseries', (req, res) => {
         };
         var downloads=0;
         var uploads=0;
-        
         Object.entries(foundData).forEach(element => {
             var [ key , value] = element ;
             Object.entries(value.data).forEach(entry => {
                 var [ item , contents ] = entry
+                if ( contents.user !== "AltaiW") {
                 downloads+=Number(contents.download)
                 uploads+=Number(uploads)
+                }
             })
             timeseries.datedata.push(value.date);
             downloads=downloads / 1024
             timeseries.downloaddata.push(downloads.toFixed(2));
             uploads=uploads / 1024
-            timeseries.uploaddata.push(uploads);
+            timeseries.uploaddata.push(uploads.toFixed(2));
         });
         res.send(timeseries);
       };
