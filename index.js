@@ -52,7 +52,7 @@ app.get('/timeseries', (req, res) => {
                 var [ item , contents ] = entry
                 if ( contents.user !== "AltaiW") {
                 downloads+=Number(contents.download)
-                uploads+=Number(uploads)
+                uploads+=Number(contents.upload)
                 }
             })
             timeseries.datedata.push(value.date);
