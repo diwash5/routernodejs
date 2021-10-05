@@ -30,6 +30,11 @@ app.post('/speed', (req,res) => {
         });
 } );
 
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.get('/timeseries', (req, res) => { 
     Speed.find({},{
       _id : 0,

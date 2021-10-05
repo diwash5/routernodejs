@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Router | Homepage</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Router | Homepage</title>
 </head>
+
 <body class="bg-success">
-    <div class="col-8 offset-2">
-        <div class="card">
-            <div class="body-card">
-                <h5>I am alive</h5> 
-                <hr>
-                <button src="/code.js" onclick="getdata()">Request Chart</button>
+	<div class="col-8 offset-2">
+		<div class="card">
+			<div class="body-card">
+				<h5>I am alive</h5>
+				<hr>
+				<button src="/code.js" onclick="getdata()">Request Chart</button>
                 <button src="/code.js" onclick="timeseries()">Request line Chart</button>
                 <hr>
-                <canvas id="myChart" width="400" height="300"></canvas>
+                <canvas id="myChart" width="400" height="300" role="img"></canvas>
             </div>
         </div>
     </div>
