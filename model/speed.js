@@ -7,6 +7,10 @@ const speedSchema = new Schema({
             type : String,
             required : true
         },
+        source: {
+          type : String,
+          required : true
+        },
         data: {
             type : Array,
             required : true

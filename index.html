@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Router | Homepage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
-<body class="bg-success">
-    <div class="col-8 offset-2">
-        <div class="card">
-            <div class="body-card">
-                <h5>I am alive</h5> 
-                <hr>
-                <button src="/code.js" onclick="getdata()">Request Chart</button>
-                <button src="/code.js" onclick="timeseries()">Request line Chart</button>
-                <hr>
-                <canvas id="myChart" width="400" height="300"></canvas>
-            </div>
-        </div>
-    </div>
-    <script src="/code.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+  <h5>i'm alive </h5>
+  <div id="container" style="width:100%; height:400px;"></div>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+        const chart = Highcharts.chart('container', {
+            chart: {
+                type: 'bar',
+                scrollablePlotArea: {
+            minWidth: 200,
+            scrollPositionX: 1
+        }
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas'],
+                 scrollbar: {
+            enabled: true
+        },
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+             scrollbar: {
+            enabled: true
+            },
+            series: [{
+                name: 'Jane',
+                data: [1, 5]
+            }, {
+                name: 'John',
+                data: [5, 7]
+            },{
+                name: 'Jane',
+                data: [3, 5]
+            }, {
+                name: 'John',
+                data: [5, 35]
+            },{
+                name: 'Jane',
+                data: [4, 5]
+            }, {
+                name: 'John',
+                data: [5, 7]
+            },{
+                name: 'Jane',
+                data: [1, 5]
+            }, {
+                name: 'John',
+                data: [5, 7]
+            }]
+        });
+    }); </script>
 </body>
 </html>
