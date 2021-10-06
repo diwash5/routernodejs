@@ -1,4 +1,3 @@
-function bargraph(){
 	document.addEventListener('DOMContentLoaded', function () {
         const chart = Highcharts.chart('container', {
             chart: {
@@ -73,7 +72,6 @@ min:1,
                     text: 'Data in GB'
                       },
                 min:1,
-                max :20,
                 scrollbar: {
                     enabled: true
                 }
@@ -196,4 +194,3 @@ null,
 ]}]
         });
     });
-}
