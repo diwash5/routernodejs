@@ -8,11 +8,6 @@ const myPassword = process.env['password']
 const dbURI = `mongodb+srv://${myUsername}:${myPassword}@router.fnopf.mongodb.net/RouterTRY?retryWrites=true&w=majority`
 const Speed = require('./model/speed')
 
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
-
 mongoose.connect(dbURI)
   .then((result) => {
     app.listen(PORT, () => console.log('Server started on port ' + PORT));
