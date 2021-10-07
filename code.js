@@ -1,5 +1,8 @@
-	document.addEventListener('DOMContentLoaded', function () {
-        const chart = Highcharts.chart('container', {
+function barchart() {
+fetch('https://routernodejs-1.diwash5.repl.co/userusage')
+    .then(response => response.json())
+    .then(data => {
+        const chart = Highcharts.chart('barchart', {
             chart: {
             type: 'bar'
             },
@@ -7,62 +10,9 @@
                 text: 'Total usage'
             },
             xAxis: {
-                categories: [
-"MyLaptop",
-"AltaiW",
-"TP841N",
-"192.168.30.140",
-"MyPhone",
-"MI3c",
-"192.168.30.122",
-"KTaunty",
-"SM-J260G",
-"KTuncle",
-"Kamal",
-"Galaxy-A20s",
-"M2006C3MG-Redmi9C",
-"realme-3-Pro",
-"Prdpphn",
-"Acer-PC",
-"android-e03525f2fb256f54",
-"realme-C15-Qualcomm-Edition",
-"*-MI4A",
-"PrdpLtp",
-"iPhone",
-"Galaxy-Tab-A-2016",
-"POCOPHONEF1-iphone12",
-"*-MI4C",
-"TBaunty",
-"android-7449fb0a2b5637d",
-"android-df948a3f55de0586",
-"192.168.30.152",
-"RedmiNote8-RedmiNote",
-"Redmi4X-shareit",
-"192.168.30.162",
-"192.168.30.170",
-"192.168.30.183",
-"Tv.wifi",
-"RedmiNote8-Redminote",
-"MyLaptpL",
-"192.168.30.184",
-"192.168.30.186",
-"192.168.30.188",
-"",
-"DESKTOP-G9D84EC",
-"192.168.30.200",
-"192.168.30.203",
-"192.168.99.83",
-"192.168.30.207",
-"android-724c3341d4ef0d50",
-"192.168.31.100",
-"192.168.31.101",
-"21061119BI",
-"192.168.30.212",
-"192.168.30.219",
-"192.168.31.104"
-],
-max:8,
-min:1,
+                categories: data.user ,
+    max:8,
+    min:1,
     scrollbar: {
     enabled: true
                 },
@@ -72,6 +22,7 @@ min:1,
                     text: 'Data in GB'
                       },
                 min:1,
+                max:20,
                 scrollbar: {
                     enabled: true
                 }
@@ -82,115 +33,120 @@ min:1,
                       }
                 },
             series: [{
-                name: 'totaluploads',
-                data: [
-2.107,
-3.351,
-0,
-0,
-1.495,
-0.005,
-0.001,
-0.367,
-0.127,
-0.353,
-0.756,
-0.338,
-0.472,
-0.339,
-0.629,
-0.488,
-0.159,
-0.701,
-0.55,
-0.621,
-0.294,
-0.047,
-0.001,
-0.1,
-0.046,
-0.064,
-0.007,
-0,
-0.003,
-0.062,
-0.002,
-0.001,
-0,
-0,
-0.02,
-0.006,
-0.008,
-0,
-0,
-null,
-0.027,
-0.004,
-0.005,
-0,
-0,
-0.087,
-0.001,
-0,
-0.181,
-0,
-0,
-0
-]
+                name: 'Total Uploads',
+                data: data.totaluploads
             }, {
-                name: 'totaldownloads',
-                data: [
-12.716,
-52.716,
-0,
-0,
-52.865,
-0.003,
-0.001,
-6.478,
-0.369,
-5.257,
-13.09,
-1.67,
-9.509,
-9.626,
-11.197,
-2.039,
-2.572,
-4.843,
-10.056,
-20.013,
-2.975,
-0.647,
-0.009,
-2.292,
-0.654,
-0.332,
-0.206,
-0,
-0.042,
-0.466,
-0.001,
-0.001,
-0,
-0,
-0.365,
-0.064,
-0.009,
-0.001,
-0,
-null,
-1.38,
-0.04,
-0.006,
-0,
-0,
-2.447,
-0.001,
-0,
-2.213,
-0,
-0,
-]}]
+                name: 'Total Downloads',
+                data: data.totaldownloads }]
         });
     });
+}
+function linechart() {
+fetch('https://routernodejs-1.diwash5.repl.co/timeseries')
+    .then(response => response.json())
+    .then(data => {
+Highcharts.chart('mi4alinechart', {
+
+    title: {
+        text: 'Time line of Data usage'
+    },
+    subtitle: {
+        text: 'Source: Mi-4A'
+    },
+
+    yAxis: {
+        title: {
+            text: 'KB/S'
+        }
+    },
+    xAxis: {
+        categories: data.mi4adates ,
+        scrollbar: {
+          enabled: true
+                },
+        max:30
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    series: [{
+        name: 'Download',
+        data: data.mi4adownloads
+    }, {
+        name: 'Upload',
+        data: data.mi4auploads
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+Highcharts.chart('mi4clinechart', {
+
+    title: {
+        text: 'Time line of Data usage'
+    },
+
+    subtitle: {
+        text: 'Source: Mi-4C'
+    },
+
+    yAxis: {
+        title: {
+            text: 'KB/S'
+        }
+    },
+
+    xAxis: {
+        categories: data.mi4cdates ,
+        scrollbar: {
+          enabled: true
+                },
+        max:30
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    series: [{
+        name: 'Download',
+        data: data.mi4cdownloads
+    }, {
+        name: 'Upload',
+        data: data.mi4cuploads
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+ })
+}

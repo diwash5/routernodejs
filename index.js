@@ -41,7 +41,10 @@ app.get('/', function(req, res) {
 app.get('/code.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/code.js'));
     }); 
-    
+app.get('/linechart.js', function(req, res) {
+    res.sendFile(path.join(__dirname, '/linechart.js'));
+    });     
+
 app.get('/userusage', (req, res) => { 
         Speed.find({},{
           _id : 0,
@@ -88,3 +91,50 @@ app.get('/userusage', (req, res) => {
             res.send(userdata);
           };
         }, {} )});
+
+app.get('/timeseries', (req, res) => { 
+    Speed.find({},{
+      _id : 0,
+      updatedAt : 0,
+      __v: 0
+    }, (err,foundData) => {
+      if(err) {
+        console.log(err);
+      } else {
+ const userdata = {
+    "mi4adates": [ ],
+    "mi4auploads": [],
+    "mi4adownloads": [],
+    "mi4cdates": [],
+    "mi4cuploads":[],
+    "mi4cdownloads": []
+};
+Object.entries(foundData).forEach(entries => {
+    const [ index , value ] = entries
+    var uploadstotal=0;
+    var downloadtotal=0;
+    if ( value.source == "MI-4A" )  {
+        Object.entries(value.data).forEach(entry => {
+            const [ key , mi4adata ] = entry
+            if ( mi4adata.user !== "AltaiW" ) {
+            uploadstotal += Number(mi4adata.upload);
+            downloadtotal += Number(mi4adata.download); }
+        })
+        userdata.mi4adates.push(value.date);
+        userdata.mi4auploads.push(Number((uploadstotal / 1024).toFixed(3)));
+        userdata.mi4adownloads.push(Number((downloadtotal / 1024).toFixed(3)));
+    }
+    if ( value.source == "MI-4C" )  {
+        Object.entries(value.data).forEach(entry => {
+            const [ key , mi4cdata ] = entry
+            uploadstotal += Number(mi4cdata.upload);
+            downloadtotal += Number(mi4cdata.download);
+        })
+        userdata.mi4cdates.push(value.date);
+        userdata.mi4cuploads.push(Number((uploadstotal / 1024).toFixed(3)));
+        userdata.mi4cdownloads.push(Number((downloadtotal /  1024).toFixed(3)));
+        }
+      })
+        res.send(userdata);
+      };
+    }, {} )});
