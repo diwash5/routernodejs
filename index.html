@@ -3,25 +3,25 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Router | Homepage</title>
+	<script src="https://code.highcharts.com/stock/highstock.js">
+	</script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/stock/modules/exporting.js">
+	</script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+	<script src="https://code.highcharts.com/stock/modules/accessibility.js">
+	</script>
+  	<script src='/code.js'> </script>
+
 </head>
 
-<body class="bg-success">
-	<div class="col-8 offset-2">
-		<div class="card">
-			<div class="body-card">
-				<h5>I am alive</h5>
-				<hr>
-				<button src="/code.js" onclick="getdata()">Request Chart</button>
-                <button src="/code.js" onclick="timeseries()">Request line Chart</button>
-                <hr>
-                <canvas id="myChart" width="400" height="300" role="img"></canvas>
-            </div>
-        </div>
-    </div>
-    <script src="/code.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+	<h5>i'm alive </h5>
+  <button src="/code.js" onclick="barchart()">Request User Usage </button><button src="/code.js" onclick="linechart()">Request Timeline </button>
+	<div id="barchart" style="height: 100%; width: 100%; margin: 0 auto"></div>
+  <div id="mi4alinechart" style="height: 100%; width: 100%; margin: 0 auto"></div>
+  <div id="mi4clinechart" style="height: 100%; width: 100%; margin: 0 auto"></div>
 </body>
 </html>
