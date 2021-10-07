@@ -45,7 +45,6 @@ app.get('/code.js', function(req, res) {
 app.get('/userusage', (req, res) => { 
         Speed.find({},{
           _id : 0,
-          updatedAt : 0,
           __v: 0
         }, (err,foundData) => {
           if(err) {
@@ -92,7 +91,6 @@ app.get('/userusage', (req, res) => {
 app.get('/timeseries', (req, res) => { 
     Speed.find({},{
       _id : 0,
-      updatedAt : 0,
       __v: 0
     }, (err,foundData) => {
       if(err) {
