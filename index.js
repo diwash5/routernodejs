@@ -5,7 +5,7 @@ const path = require('path')
 const PORT = 3000;
 const myUsername = process.env['username']
 const myPassword = process.env['password']
-const dbURI = `mongodb+srv://diwash:diwash221122@router.fnopf.mongodb.net/RouterTRY?retryWrites=true&w=majority`
+const dbURI = `mongodb+srv://${myUsername}:${myPassword}@router.fnopf.mongodb.net/RouterTRY?retryWrites=true&w=majority`
 const Speed = require('./model/speed')
 
 app.use(function (req, res, next) {
