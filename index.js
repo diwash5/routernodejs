@@ -40,10 +40,7 @@ app.get('/', function(req, res) {
         
 app.get('/code.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/code.js'));
-    }); 
-app.get('/linechart.js', function(req, res) {
-    res.sendFile(path.join(__dirname, '/linechart.js'));
-    });     
+    });    
 
 app.get('/userusage', (req, res) => { 
         Speed.find({},{
