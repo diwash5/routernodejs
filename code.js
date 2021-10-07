@@ -1,5 +1,5 @@
 function barchart() {
-fetch('https://routernodejs-1.diwash5.repl.co/userusage')
+fetch('https://DeepskyblueAlienatedDaemons.diwash5.repl.co/userusage')
     .then(response => response.json())
     .then(data => {
         const chart = Highcharts.chart('barchart', {
@@ -42,7 +42,7 @@ fetch('https://routernodejs-1.diwash5.repl.co/userusage')
     });
 }
 function linechart() {
-fetch('https://routernodejs-1.diwash5.repl.co/timeseries')
+fetch('https://DeepskyblueAlienatedDaemons.diwash5.repl.co/timeseries')
     .then(response => response.json())
     .then(data => {
 Highcharts.chart('mi4alinechart', {
