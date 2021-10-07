@@ -133,3 +133,16 @@ Object.entries(foundData).forEach(entries => {
         res.send(userdata);
       };
     }, {} )});
+
+app.get('/rawdata', (req, res) => { 
+    Speed.find({},{
+        _id : 0,
+        updatedAt : 0,
+        __v: 0
+    }, (err,foundData) => {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send(foundData);
+        };
+        }, {} )});
