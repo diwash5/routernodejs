@@ -72,11 +72,11 @@ Highcharts.chart('mi4alinechart', {
         verticalAlign: 'middle'
     },
     series: [{
-        name: 'Download',
-        data: data.mi4adownloads
-    }, {
         name: 'Upload',
         data: data.mi4auploads
+    }, {
+        name: 'Download',
+        data: data.mi4adownloads
     }],
 
     responsive: {
@@ -125,11 +125,11 @@ Highcharts.chart('mi4clinechart', {
         verticalAlign: 'middle'
     },
     series: [{
-        name: 'Download',
-        data: data.mi4cdownloads
-    }, {
         name: 'Upload',
         data: data.mi4cuploads
+    }, {
+        name: 'Download',
+        data: data.mi4cdownloads
     }],
 
     responsive: {
@@ -139,9 +139,9 @@ Highcharts.chart('mi4clinechart', {
             },
             chartOptions: {
                 legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
                 }
             }
         }]

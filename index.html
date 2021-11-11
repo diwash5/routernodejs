@@ -5,6 +5,29 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Router | Homepage</title>
+  <style>
+body {
+  background-color: lightblue;
+}
+#userusage {
+  border-radius: 5px;
+  background: Red;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+}
+#timeline {
+  border-radius: 5px;
+  background: Red;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+}
+#barchart {
+  background : black;
+
+}
+</style>
 	<script src="https://code.highcharts.com/stock/highstock.js">
 	</script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -19,7 +42,12 @@
 
 <body>
 	<h5>i'm alive </h5>
-  <button src="/code.js" onclick="barchart()">Request User Usage </button><button src="/code.js" onclick="linechart()">Request Timeline </button>
+  <div > 
+  <button id="userusage" src="/code.js" onclick="barchart()">Request User Usage </button>
+  
+  <button id="timeline" src="/code.js" onclick="linechart()">Request Timeline </button>
+  </div>
+
 	<div id="barchart" style="height: 100%; width: 100%; margin: 0 auto"></div>
   <div id="mi4alinechart" style="height: 100%; width: 100%; margin: 0 auto"></div>
   <div id="mi4clinechart" style="height: 100%; width: 100%; margin: 0 auto"></div>

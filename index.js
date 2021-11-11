@@ -128,3 +128,7 @@ Object.entries(foundData).forEach(entries => {
         res.send(userdata);
       };
     }, {} )});
+
+app.get('/format.css', function(req, res) {
+    res.sendFile(path.join(__dirname, '/format.css'));
+    });
